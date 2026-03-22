@@ -1,0 +1,250 @@
+Data statistics: {0: {2: 41, 4: 5777, 7: 9330}, 1: {0: 9022}, 2: {0: 327, 5: 12176}, 3: {1: 5, 2: 1, 3: 1, 4: 1, 6: 313}, 4: {0: 16, 1: 361, 2: 2, 4: 1048, 6: 7572}, 5: {5: 2, 8: 12151}, 6: {1: 4, 3: 10194}, 7: {1: 9112}, 8: {0: 1, 1: 26, 3: 206, 4: 1179, 5: 4, 7: 71, 8: 734}, 9: {1: 1, 2: 10316, 4: 1, 6: 1}}
+client classes: [[4, 7], [0], [0, 5], [6], [1, 4, 6], [8], [3], [1], [3, 4, 8], [2]]
+ConvNet(
+  (net_act): ReLU(inplace=True)
+  (net_pooling): AvgPool2d(kernel_size=2, stride=2, padding=0)
+  (features): Sequential(
+    (0): Conv2d(3, 128, kernel_size=(3, 3), stride=(1, 1), padding=(3, 3))
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): ReLU(inplace=True)
+    (7): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (8): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (9): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): ReLU(inplace=True)
+    (11): AvgPool2d(kernel_size=2, stride=2, padding=0)
+  )
+  (classifier): Linear(in_features=2048, out_features=9, bias=True)
+)
+317961
+{'seed': 19260817, 'device': 'cuda:0', 'dataset_root': './dataset/torchvision', 'split_file': '/home/luan/local/Class2/FedVCK_2024/dataset/split_file/PathMNIST_client_num=10_alpha=0.05.json', 'dataset': 'PathMNIST', 'client_num': 10, 'partition': 'dirichlet', 'alpha': 0.05, 'num_classes_per_client': 2, 'model': 'ConvNetBN', 'communication_rounds': 1, 'join_ratio': 1.0, 'lr_server': 0.001, 'momentum_server': 0.9, 'weight_decay_server': 1e-06, 'batch_size': 256, 'model_epochs': 5, 'local_ep': 40, 'ipc': 10, 'compression_ratio': 0.01, 'dc_iterations': 200, 'dc_batch_size': 64, 'image_lr': 0.2, 'image_momentum': 0.5, 'image_weight_decay': 0, 'init': 'random_noise', 'clip_norm': 10.0, 'weighted_matching': False, 'weighted_sample': False, 'weighted_mmd': True, 'contrastive_way': 'supcon_asym_syn', 'con_beta': 0.0, 'con_temp': 1.0, 'topk': 5, 'lr_head': 0.01, 'momentum_head': 0.9, 'weight_decay_head': 0, 'gamma': 1.0, 'lamda': 0.5, 'b': 0.7, 'kernel': 'linear', 'ogca_eps': 0.05, 'ogca_iters': 10, 'ogca_sigmas': '0.5,1,2,4', 'lr': 0.01, 'momentum': 0.5, 'weight_decay': 0, 'dsa_strategy': 'color_crop_cutout_flip_scale_rotate', 'preserve_all': False, 'eval_gap': 1, 'tag': 'ogca_test', 'save_root_path': '/home/luan/local/Class2/FedVCK_2024/results/PathMNIST_alpha0.05_10clients/ConvNetBN_1.0%_200dc_5epochs_ogca_test', 'dsa_param': <src.utils.ParamDiffAug object at 0x7f9f8e5b6340>, 'dsa': True}
+ ====== round 0 ======
+---------- client training ----------
+selected clients: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+total 24564.0MB, used 2524.88MB, free 22039.12MB
+initialized by random noise
+client 0 have real samples [5777, 9330]
+client 0 will condense {4: 58, 7: 94} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 4 have 5777 samples, histogram: [   7   14   38   83  344 1224 2693 1207  149   18], bin edged: [0.0001726  0.00017268 0.00017276 0.00017284 0.00017292 0.00017299
+ 0.00017307 0.00017315 0.00017323 0.00017331 0.00017339]
+class 7 have 9330 samples, histogram: [  59  563 1922 2675 2079 1397  514   98   17    6], bin edged: [0.00010706 0.00010709 0.00010712 0.00010715 0.00010718 0.00010722
+ 0.00010725 0.00010728 0.00010731 0.00010734 0.00010738]
+client 0, data condensation 0, total loss = 1.3522191047668457, avg loss = 0.6761095523834229
+client 0, data condensation 200, total loss = 0.06704781949520111, avg loss = 0.033523909747600555
+Round 0, client 0 condense time: 6.721195936203003
+client 0, class 4 have 5777 samples
+client 0, class 7 have 9330 samples
+total 24564.0MB, used 2982.88MB, free 21581.12MB
+total 24564.0MB, used 2982.88MB, free 21581.12MB
+initialized by random noise
+client 1 have real samples [9022]
+client 1 will condense {0: 91} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 0 have 9022 samples, histogram: [  43  352 2057 3716 2258  491   84   16    3    2], bin edged: [0.00011069 0.00011073 0.00011077 0.00011082 0.00011086 0.0001109
+ 0.00011094 0.00011099 0.00011103 0.00011107 0.00011111]
+client 1, data condensation 0, total loss = 0.9660375714302063, avg loss = 0.9660375714302063
+client 1, data condensation 200, total loss = 0.029080044478178024, avg loss = 0.029080044478178024
+Round 0, client 1 condense time: 3.8253464698791504
+client 1, class 0 have 9022 samples
+total 24564.0MB, used 2902.88MB, free 21661.12MB
+total 24564.0MB, used 2902.88MB, free 21661.12MB
+initialized by random noise
+client 2 have real samples [327, 12176]
+client 2 will condense {0: 5, 5: 122} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 0 have 327 samples, histogram: [ 3  1  8 15 68 86 80 43 14  9], bin edged: [0.0030549  0.00305545 0.003056   0.00305656 0.00305711 0.00305766
+ 0.00305821 0.00305876 0.00305931 0.00305986 0.00306041]
+class 5 have 12176 samples, histogram: [  24  132  332 1059 2124 3143 3158 1661  517   26], bin edged: [8.19235167e-05 8.19596135e-05 8.19957103e-05 8.20318071e-05
+ 8.20679039e-05 8.21040007e-05 8.21400975e-05 8.21761943e-05
+ 8.22122912e-05 8.22483880e-05 8.22844848e-05]
+client 2, data condensation 0, total loss = 1.4790656566619873, avg loss = 0.7395328283309937
+client 2, data condensation 200, total loss = 0.2427981197834015, avg loss = 0.12139905989170074
+Round 0, client 2 condense time: 5.684411287307739
+client 2, class 0 have 327 samples
+client 2, class 5 have 12176 samples
+total 24564.0MB, used 2992.88MB, free 21571.12MB
+total 24564.0MB, used 2992.88MB, free 21571.12MB
+initialized by random noise
+client 3 have real samples [313]
+client 3 will condense {6: 5} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 6 have 313 samples, histogram: [ 3 22 68 63 67 43 31 11  2  3], bin edged: [0.0031887  0.00319019 0.00319169 0.00319318 0.00319468 0.00319617
+ 0.00319767 0.00319916 0.00320066 0.00320215 0.00320365]
+client 3, data condensation 0, total loss = 0.9651572108268738, avg loss = 0.9651572108268738
+client 3, data condensation 200, total loss = 0.22110968828201294, avg loss = 0.22110968828201294
+Round 0, client 3 condense time: 1.3316807746887207
+client 3, class 6 have 313 samples
+total 24564.0MB, used 2720.88MB, free 21843.12MB
+total 24564.0MB, used 2720.88MB, free 21843.12MB
+initialized by random noise
+client 4 have real samples [361, 1048, 7572]
+client 4 will condense {1: 5, 4: 11, 6: 76} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 1 have 361 samples, histogram: [ 52  12  14  19  38  59 111  49   5   2], bin edged: [0.00276468 0.00276575 0.00276682 0.00276789 0.00276895 0.00277002
+ 0.00277109 0.00277216 0.00277323 0.0027743  0.00277537]
+class 4 have 1048 samples, histogram: [  6   7  27  80 223 370 230  89  13   3], bin edged: [0.00095228 0.00095263 0.00095298 0.00095334 0.00095369 0.00095404
+ 0.0009544  0.00095475 0.0009551  0.00095545 0.00095581]
+class 6 have 7572 samples, histogram: [ 263 1339 2243 1914 1321  387   81   17    4    3], bin edged: [0.00013179 0.00013188 0.00013197 0.00013206 0.00013215 0.00013224
+ 0.00013233 0.00013242 0.00013251 0.0001326  0.00013269]
+client 4, data condensation 0, total loss = 1.7305245399475098, avg loss = 0.5768415133158366
+client 4, data condensation 200, total loss = 0.3748341202735901, avg loss = 0.12494470675786336
+Round 0, client 4 condense time: 5.5278801918029785
+client 4, class 1 have 361 samples
+client 4, class 4 have 1048 samples
+client 4, class 6 have 7572 samples
+total 24564.0MB, used 2884.88MB, free 21679.12MB
+total 24564.0MB, used 2884.88MB, free 21679.12MB
+initialized by random noise
+client 5 have real samples [12151]
+client 5 will condense {8: 122} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 8 have 12151 samples, histogram: [  17   27  114  314 1311 4050 4577 1549  174   18], bin edged: [8.20597369e-05 8.20995917e-05 8.21394465e-05 8.21793012e-05
+ 8.22191560e-05 8.22590108e-05 8.22988656e-05 8.23387203e-05
+ 8.23785751e-05 8.24184299e-05 8.24582847e-05]
+client 5, data condensation 0, total loss = 0.962052583694458, avg loss = 0.962052583694458
+client 5, data condensation 200, total loss = 0.0242171548306942, avg loss = 0.0242171548306942
+Round 0, client 5 condense time: 4.959582090377808
+client 5, class 8 have 12151 samples
+total 24564.0MB, used 2982.88MB, free 21581.12MB
+total 24564.0MB, used 2982.88MB, free 21581.12MB
+initialized by random noise
+client 6 have real samples [10194]
+client 6 will condense {3: 102} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 3 have 10194 samples, histogram: [  31  405 2975 4031 1875  608  231   33    3    2], bin edged: [9.79616997e-05 9.80002585e-05 9.80388172e-05 9.80773759e-05
+ 9.81159347e-05 9.81544934e-05 9.81930522e-05 9.82316109e-05
+ 9.82701697e-05 9.83087284e-05 9.83472871e-05]
+client 6, data condensation 0, total loss = 0.9773303866386414, avg loss = 0.9773303866386414
+client 6, data condensation 200, total loss = 0.026922356337308884, avg loss = 0.026922356337308884
+Round 0, client 6 condense time: 4.185165882110596
+client 6, class 3 have 10194 samples
+total 24564.0MB, used 2946.88MB, free 21617.12MB
+total 24564.0MB, used 2946.88MB, free 21617.12MB
+initialized by random noise
+client 7 have real samples [9112]
+client 7 will condense {1: 92} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 1 have 9112 samples, histogram: [   5   16  102 3915 4859  176   27    7    3    2], bin edged: [0.00010961 0.00010964 0.00010968 0.00010971 0.00010974 0.00010978
+ 0.00010981 0.00010984 0.00010988 0.00010991 0.00010994]
+client 7, data condensation 0, total loss = 0.9640332460403442, avg loss = 0.9640332460403442
+client 7, data condensation 200, total loss = 0.050438784062862396, avg loss = 0.050438784062862396
+Round 0, client 7 condense time: 3.814584970474243
+client 7, class 1 have 9112 samples
+total 24564.0MB, used 2926.88MB, free 21637.12MB
+total 24564.0MB, used 2926.88MB, free 21637.12MB
+initialized by random noise
+client 8 have real samples [206, 1179, 734]
+client 8 will condense {3: 5, 4: 12, 8: 8} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 3 have 206 samples, histogram: [ 1  1  8 24 70 63 29  8  1  1], bin edged: [0.00485005 0.00485091 0.00485177 0.00485263 0.0048535  0.00485436
+ 0.00485522 0.00485609 0.00485695 0.00485781 0.00485868]
+class 4 have 1179 samples, histogram: [  3   5  15  36 175 527 344  59  12   3], bin edged: [0.00084658 0.00084686 0.00084714 0.00084742 0.0008477  0.00084799
+ 0.00084827 0.00084855 0.00084883 0.00084911 0.00084939]
+class 8 have 734 samples, histogram: [  1   2  14  37 103 227 200 112  31   7], bin edged: [0.00136059 0.0013609  0.0013612  0.00136151 0.00136181 0.00136212
+ 0.00136242 0.00136273 0.00136303 0.00136333 0.00136364]
+client 8, data condensation 0, total loss = 1.8396234512329102, avg loss = 0.6132078170776367
+client 8, data condensation 200, total loss = 0.4645891487598419, avg loss = 0.15486304958661398
+Round 0, client 8 condense time: 3.1764490604400635
+client 8, class 3 have 206 samples
+client 8, class 4 have 1179 samples
+client 8, class 8 have 734 samples
+total 24564.0MB, used 2746.88MB, free 21817.12MB
+total 24564.0MB, used 2746.88MB, free 21817.12MB
+initialized by random noise
+client 9 have real samples [10316]
+client 9 will condense {2: 104} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 2 have 10316 samples, histogram: [   3   18   49  165  472 1724 5652 2129   93   11], bin edged: [9.66913381e-05 9.67297574e-05 9.67681766e-05 9.68065959e-05
+ 9.68450151e-05 9.68834344e-05 9.69218536e-05 9.69602729e-05
+ 9.69986922e-05 9.70371114e-05 9.70755307e-05]
+client 9, data condensation 0, total loss = 0.9493891596794128, avg loss = 0.9493891596794128
+client 9, data condensation 200, total loss = 0.026908131316304207, avg loss = 0.026908131316304207
+Round 0, client 9 condense time: 4.2783637046813965
+client 9, class 2 have 10316 samples
+total 24564.0MB, used 2958.88MB, free 21605.12MB
+server receives {0: 96, 1: 97, 2: 104, 3: 107, 4: 81, 5: 122, 6: 81, 7: 94, 8: 130} condensed samples for each class
+logit_proto before softmax: tensor([[-4.4342e-03,  2.0410e-03, -4.5095e-03,  4.5182e-02,  2.7147e-02,
+          2.0754e-02,  3.6445e-03, -5.2092e-02, -2.9720e-02],
+        [ 8.6333e-03, -1.1934e-03,  7.2401e-03, -1.3920e-02, -1.1888e-02,
+          7.6083e-03, -1.3644e-02,  1.1760e-02,  1.1889e-02],
+        [ 5.2660e-03,  6.3068e-03, -3.2730e-02,  7.1992e-03,  1.7497e-02,
+          7.1147e-03,  8.9804e-03,  2.3819e-02, -6.5136e-03],
+        [ 2.8852e-03,  2.7836e-02,  1.3824e-02,  1.0211e-02,  2.7556e-03,
+          1.3168e-02,  1.8944e-02,  4.3513e-02,  3.0944e-02],
+        [-4.2900e-03, -2.6619e-02,  1.6905e-02, -4.3250e-03,  1.5049e-02,
+         -2.1193e-02,  1.4426e-02, -1.3755e-02, -2.5098e-02],
+        [-4.7563e-02, -1.8021e-02, -2.2977e-02,  6.0266e-03, -1.7375e-02,
+          9.8032e-05, -7.7002e-03,  2.1325e-02, -7.6198e-03],
+        [ 1.4796e-02,  1.1052e-02, -5.9779e-03,  5.3772e-03, -2.0017e-02,
+         -6.2669e-03, -2.5058e-03,  1.1381e-02,  2.3512e-02],
+        [-2.5103e-03, -3.4208e-02,  1.9385e-02, -9.5278e-03,  2.1041e-02,
+         -2.1006e-02,  1.7808e-02, -1.3314e-02, -3.3954e-02],
+        [-2.7550e-02,  3.8809e-02, -5.5299e-03,  1.1396e-02, -5.8465e-03,
+         -9.5896e-03, -1.8501e-02,  2.0508e-02,  2.4079e-02]], device='cuda:0')
+shape of prototypes in tensor: torch.Size([9, 2048])
+shape of logit prototypes in tensor: torch.Size([9, 9])
+relation tensor: tensor([[3, 4, 5, 6, 1],
+        [8, 7, 0, 5, 2],
+        [7, 4, 6, 3, 5],
+        [7, 8, 1, 6, 2],
+        [2, 4, 6, 0, 3],
+        [7, 3, 5, 8, 6],
+        [8, 0, 7, 1, 3],
+        [4, 2, 6, 0, 3],
+        [1, 8, 7, 3, 2]], device='cuda:0')
+---------- update global model ----------
+912
+preserve threshold: 10
+1
+Round 0: # synthetic sample: 912
+total 24564.0MB, used 2958.88MB, free 21605.12MB
+{0: {0: 1314, 1: 0, 2: 0, 3: 0, 4: 2, 5: 20, 6: 0, 7: 0, 8: 2}, 1: {0: 3, 1: 0, 2: 0, 3: 0, 4: 843, 5: 1, 6: 0, 7: 0, 8: 0}, 2: {0: 168, 1: 0, 2: 0, 3: 0, 4: 2, 5: 169, 6: 0, 7: 0, 8: 0}, 3: {0: 557, 1: 0, 2: 0, 3: 0, 4: 76, 5: 1, 6: 0, 7: 0, 8: 0}, 4: {0: 1027, 1: 0, 2: 0, 3: 0, 4: 3, 5: 4, 6: 0, 7: 0, 8: 1}, 5: {0: 572, 1: 0, 2: 0, 3: 0, 4: 8, 5: 12, 6: 0, 7: 0, 8: 0}, 6: {0: 695, 1: 0, 2: 0, 3: 0, 4: 27, 5: 19, 6: 0, 7: 0, 8: 0}, 7: {0: 375, 1: 0, 2: 0, 3: 0, 4: 27, 5: 19, 6: 0, 7: 0, 8: 0}, 8: {0: 922, 1: 1, 2: 0, 3: 3, 4: 241, 5: 60, 6: 0, 7: 0, 8: 6}}
+round 0 evaluation: test acc is 0.1859, test loss = 2.190584
+{0: {0: 1, 1: 0, 2: 0, 3: 0, 4: 0, 5: 2, 6: 0, 7: 0, 8: 1335}, 1: {0: 5, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 842}, 2: {0: 11, 1: 0, 2: 0, 3: 0, 4: 52, 5: 3, 6: 0, 7: 0, 8: 273}, 3: {0: 3, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 631}, 4: {0: 3, 1: 0, 2: 0, 3: 0, 4: 0, 5: 1, 6: 0, 7: 0, 8: 1031}, 5: {0: 3, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 589}, 6: {0: 9, 1: 0, 2: 0, 3: 0, 4: 0, 5: 6, 6: 0, 7: 0, 8: 726}, 7: {0: 2, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 419}, 8: {0: 53, 1: 0, 2: 0, 3: 0, 4: 0, 5: 4, 6: 0, 7: 0, 8: 1176}}
+epoch 0, train loss avg now = 2.216991, train contrast loss now = 0.000000, test acc now = 0.1639, test loss now = 2.187948
+At epoch 2, decay the con_beta with 0.1 factor
+{0: {0: 1, 1: 0, 2: 2, 3: 0, 4: 0, 5: 1197, 6: 0, 7: 0, 8: 138}, 1: {0: 0, 1: 0, 2: 1, 3: 826, 4: 0, 5: 0, 6: 12, 7: 0, 8: 8}, 2: {0: 0, 1: 0, 2: 5, 3: 0, 4: 0, 5: 99, 6: 92, 7: 129, 8: 14}, 3: {0: 24, 1: 0, 2: 0, 3: 3, 4: 0, 5: 269, 6: 227, 7: 0, 8: 111}, 4: {0: 77, 1: 4, 2: 0, 3: 0, 4: 0, 5: 658, 6: 17, 7: 2, 8: 277}, 5: {0: 7, 1: 0, 2: 0, 3: 0, 4: 0, 5: 251, 6: 215, 7: 0, 8: 119}, 6: {0: 54, 1: 11, 2: 1, 3: 0, 4: 0, 5: 301, 6: 44, 7: 1, 8: 329}, 7: {0: 18, 1: 0, 2: 0, 3: 0, 4: 0, 5: 194, 6: 167, 7: 0, 8: 42}, 8: {0: 89, 1: 11, 2: 14, 3: 5, 4: 0, 5: 200, 6: 442, 7: 1, 8: 471}}
+epoch 5, train loss avg now = 2.193190, train contrast loss now = 0.000000, test acc now = 0.1079, test loss now = 2.196361
+epoch avg loss = 0.43863800952309057, total time = 47.09072923660278
+total 24564.0MB, used 3470.88MB, free 21093.12MB
+Round 0 finish, update the prev_syn_proto
+torch.Size([96, 3, 28, 28])
+torch.Size([97, 3, 28, 28])
+torch.Size([104, 3, 28, 28])
+torch.Size([107, 3, 28, 28])
+torch.Size([81, 3, 28, 28])
+torch.Size([122, 3, 28, 28])
+torch.Size([81, 3, 28, 28])
+torch.Size([94, 3, 28, 28])
+torch.Size([130, 3, 28, 28])
+shape of prev_syn_proto: torch.Size([9, 2048])
+{0: {0: 1, 1: 0, 2: 2, 3: 0, 4: 0, 5: 1197, 6: 0, 7: 0, 8: 138}, 1: {0: 0, 1: 0, 2: 1, 3: 826, 4: 0, 5: 0, 6: 12, 7: 0, 8: 8}, 2: {0: 0, 1: 0, 2: 5, 3: 0, 4: 0, 5: 99, 6: 92, 7: 129, 8: 14}, 3: {0: 24, 1: 0, 2: 0, 3: 3, 4: 0, 5: 269, 6: 227, 7: 0, 8: 111}, 4: {0: 77, 1: 4, 2: 0, 3: 0, 4: 0, 5: 658, 6: 17, 7: 2, 8: 277}, 5: {0: 7, 1: 0, 2: 0, 3: 0, 4: 0, 5: 251, 6: 215, 7: 0, 8: 119}, 6: {0: 54, 1: 11, 2: 1, 3: 0, 4: 0, 5: 301, 6: 44, 7: 1, 8: 329}, 7: {0: 18, 1: 0, 2: 0, 3: 0, 4: 0, 5: 194, 6: 167, 7: 0, 8: 42}, 8: {0: 89, 1: 11, 2: 14, 3: 5, 4: 0, 5: 200, 6: 442, 7: 1, 8: 471}}
+round 0 evaluation: test acc is 0.1079, test loss = 2.196361
+[0.10793871866295264]
+{0: [0.10000766590237617], 1: [0.08962665062397718], 2: [0.18326836884021758], 3: [0.2668412984907627], 4: [0.1886927892267704], 5: [0.08618343397043646], 6: [0.08544807055033743], 7: [0.10821137366816401], 8: [0.20266012916962306], 9: [0.09122481610625982]}
+{0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: []}
+{0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: []}

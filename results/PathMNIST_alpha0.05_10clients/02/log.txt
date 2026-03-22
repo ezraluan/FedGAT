@@ -1,0 +1,489 @@
+Data statistics: {0: {2: 41, 4: 5777, 7: 9330}, 1: {0: 9022}, 2: {0: 327, 5: 12176}, 3: {1: 5, 2: 1, 3: 1, 4: 1, 6: 313}, 4: {0: 16, 1: 361, 2: 2, 4: 1048, 6: 7572}, 5: {5: 2, 8: 12151}, 6: {1: 4, 3: 10194}, 7: {1: 9112}, 8: {0: 1, 1: 26, 3: 206, 4: 1179, 5: 4, 7: 71, 8: 734}, 9: {1: 1, 2: 10316, 4: 1, 6: 1}}
+client classes: [[4, 7], [0], [0, 5], [6], [1, 4, 6], [8], [3], [1], [3, 4, 8], [2]]
+ConvNet(
+  (net_act): ReLU(inplace=True)
+  (net_pooling): AvgPool2d(kernel_size=2, stride=2, padding=0)
+  (features): Sequential(
+    (0): Conv2d(3, 128, kernel_size=(3, 3), stride=(1, 1), padding=(3, 3))
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): ReLU(inplace=True)
+    (7): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (8): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (9): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): ReLU(inplace=True)
+    (11): AvgPool2d(kernel_size=2, stride=2, padding=0)
+  )
+  (classifier): Linear(in_features=2048, out_features=9, bias=True)
+)
+317961
+{'seed': 19260817, 'device': 'cuda:0', 'dataset_root': './dataset/torchvision', 'split_file': '/home/luan/local/Class2/FedVCK_2024/dataset/split_file/PathMNIST_client_num=10_alpha=0.05.json', 'dataset': 'PathMNIST', 'client_num': 10, 'partition': 'dirichlet', 'alpha': 0.05, 'num_classes_per_client': 2, 'model': 'ConvNetBN', 'communication_rounds': 1, 'join_ratio': 1.0, 'lr_server': 0.001, 'momentum_server': 0.9, 'weight_decay_server': 1e-06, 'batch_size': 256, 'model_epochs': 5, 'local_ep': 40, 'ipc': 10, 'compression_ratio': 0.01, 'dc_iterations': 5000, 'dc_batch_size': 64, 'image_lr': 0.2, 'image_momentum': 0.5, 'image_weight_decay': 0, 'init': 'random_noise', 'clip_norm': 10.0, 'weighted_matching': False, 'weighted_sample': False, 'weighted_mmd': True, 'contrastive_way': 'supcon_asym_syn', 'con_beta': 0.0, 'con_temp': 1.0, 'topk': 5, 'lr_head': 0.01, 'momentum_head': 0.9, 'weight_decay_head': 0, 'gamma': 1.0, 'lamda': 0.5, 'b': 0.7, 'kernel': 'linear', 'ogca_eps': 0.05, 'ogca_iters': 10, 'ogca_sigmas': '0.5,1,2,4', 'lr': 0.01, 'momentum': 0.5, 'weight_decay': 0, 'dsa_strategy': 'color_crop_cutout_flip_scale_rotate', 'preserve_all': False, 'eval_gap': 1, 'tag': 'ogca_test', 'save_root_path': '/home/luan/local/Class2/FedVCK_2024/results/PathMNIST_alpha0.05_10clients/ConvNetBN_1.0%_5000dc_5epochs_ogca_test', 'dsa_param': <src.utils.ParamDiffAug object at 0x7f05379b1b50>, 'dsa': True}
+ ====== round 0 ======
+---------- client training ----------
+selected clients: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+total 24564.0MB, used 2524.88MB, free 22039.12MB
+initialized by random noise
+client 0 have real samples [5777, 9330]
+client 0 will condense {4: 58, 7: 94} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 4 have 5777 samples, histogram: [   7   14   38   83  344 1224 2693 1207  149   18], bin edged: [0.0001726  0.00017268 0.00017276 0.00017284 0.00017292 0.00017299
+ 0.00017307 0.00017315 0.00017323 0.00017331 0.00017339]
+class 7 have 9330 samples, histogram: [  59  563 1922 2675 2079 1397  514   98   17    6], bin edged: [0.00010706 0.00010709 0.00010712 0.00010715 0.00010718 0.00010722
+ 0.00010725 0.00010728 0.00010731 0.00010734 0.00010738]
+client 0, data condensation 0, total loss = 1.2028801441192627, avg loss = 0.6014400720596313
+client 0, data condensation 200, total loss = 0.05963356792926788, avg loss = 0.02981678396463394
+client 0, data condensation 400, total loss = 0.06318290531635284, avg loss = 0.03159145265817642
+client 0, data condensation 600, total loss = 0.06595680117607117, avg loss = 0.032978400588035583
+client 0, data condensation 800, total loss = 0.0596664659678936, avg loss = 0.0298332329839468
+client 0, data condensation 1000, total loss = 0.06463561207056046, avg loss = 0.03231780603528023
+client 0, data condensation 1200, total loss = 0.06268146634101868, avg loss = 0.03134073317050934
+client 0, data condensation 1400, total loss = 0.06898900866508484, avg loss = 0.03449450433254242
+client 0, data condensation 1600, total loss = 0.060431547462940216, avg loss = 0.030215773731470108
+client 0, data condensation 1800, total loss = 0.0640508309006691, avg loss = 0.03202541545033455
+client 0, data condensation 2000, total loss = 0.06209525838494301, avg loss = 0.031047629192471504
+client 0, data condensation 2200, total loss = 0.06580495834350586, avg loss = 0.03290247917175293
+client 0, data condensation 2400, total loss = 0.06747458130121231, avg loss = 0.033737290650606155
+client 0, data condensation 2600, total loss = 0.062444642186164856, avg loss = 0.031222321093082428
+client 0, data condensation 2800, total loss = 0.06112578883767128, avg loss = 0.03056289441883564
+client 0, data condensation 3000, total loss = 0.06597462296485901, avg loss = 0.032987311482429504
+client 0, data condensation 3200, total loss = 0.06299876421689987, avg loss = 0.031499382108449936
+client 0, data condensation 3400, total loss = 0.06211867555975914, avg loss = 0.03105933777987957
+client 0, data condensation 3600, total loss = 0.06240753456950188, avg loss = 0.03120376728475094
+client 0, data condensation 3800, total loss = 0.06110812723636627, avg loss = 0.030554063618183136
+client 0, data condensation 4000, total loss = 0.06390514224767685, avg loss = 0.031952571123838425
+client 0, data condensation 4200, total loss = 0.059595949947834015, avg loss = 0.029797974973917007
+client 0, data condensation 4400, total loss = 0.05915064364671707, avg loss = 0.029575321823358536
+client 0, data condensation 4600, total loss = 0.0596398264169693, avg loss = 0.02981991320848465
+client 0, data condensation 4800, total loss = 0.06385675072669983, avg loss = 0.031928375363349915
+client 0, data condensation 5000, total loss = 0.06480495631694794, avg loss = 0.03240247815847397
+Round 0, client 0 condense time: 123.709148645401
+client 0, class 4 have 5777 samples
+client 0, class 7 have 9330 samples
+total 24564.0MB, used 2984.88MB, free 21579.12MB
+total 24564.0MB, used 2984.88MB, free 21579.12MB
+initialized by random noise
+client 1 have real samples [9022]
+client 1 will condense {0: 91} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 0 have 9022 samples, histogram: [ 306 4730 3155  667  133   21    4    2    3    1], bin edged: [0.00011074 0.00011079 0.00011084 0.00011089 0.00011094 0.00011098
+ 0.00011103 0.00011108 0.00011113 0.00011118 0.00011123]
+client 1, data condensation 0, total loss = 0.9317858815193176, avg loss = 0.9317858815193176
+client 1, data condensation 200, total loss = 0.029396364465355873, avg loss = 0.029396364465355873
+client 1, data condensation 400, total loss = 0.03520020470023155, avg loss = 0.03520020470023155
+client 1, data condensation 600, total loss = 0.0303671695291996, avg loss = 0.0303671695291996
+client 1, data condensation 800, total loss = 0.03189748525619507, avg loss = 0.03189748525619507
+client 1, data condensation 1000, total loss = 0.03216442093253136, avg loss = 0.03216442093253136
+client 1, data condensation 1200, total loss = 0.029944531619548798, avg loss = 0.029944531619548798
+client 1, data condensation 1400, total loss = 0.029322288930416107, avg loss = 0.029322288930416107
+client 1, data condensation 1600, total loss = 0.03378544747829437, avg loss = 0.03378544747829437
+client 1, data condensation 1800, total loss = 0.029395736753940582, avg loss = 0.029395736753940582
+client 1, data condensation 2000, total loss = 0.031137995421886444, avg loss = 0.031137995421886444
+client 1, data condensation 2200, total loss = 0.028631078079342842, avg loss = 0.028631078079342842
+client 1, data condensation 2400, total loss = 0.026996055617928505, avg loss = 0.026996055617928505
+client 1, data condensation 2600, total loss = 0.029739389196038246, avg loss = 0.029739389196038246
+client 1, data condensation 2800, total loss = 0.03051047772169113, avg loss = 0.03051047772169113
+client 1, data condensation 3000, total loss = 0.02898569032549858, avg loss = 0.02898569032549858
+client 1, data condensation 3200, total loss = 0.029350433498620987, avg loss = 0.029350433498620987
+client 1, data condensation 3400, total loss = 0.0294818002730608, avg loss = 0.0294818002730608
+client 1, data condensation 3600, total loss = 0.030127279460430145, avg loss = 0.030127279460430145
+client 1, data condensation 3800, total loss = 0.03131582960486412, avg loss = 0.03131582960486412
+client 1, data condensation 4000, total loss = 0.030553583055734634, avg loss = 0.030553583055734634
+client 1, data condensation 4200, total loss = 0.030249901115894318, avg loss = 0.030249901115894318
+client 1, data condensation 4400, total loss = 0.028788380324840546, avg loss = 0.028788380324840546
+client 1, data condensation 4600, total loss = 0.029033608734607697, avg loss = 0.029033608734607697
+client 1, data condensation 4800, total loss = 0.03121747076511383, avg loss = 0.03121747076511383
+client 1, data condensation 5000, total loss = 0.028968514874577522, avg loss = 0.028968514874577522
+Round 0, client 1 condense time: 69.47448372840881
+client 1, class 0 have 9022 samples
+total 24564.0MB, used 2904.88MB, free 21659.12MB
+total 24564.0MB, used 2904.88MB, free 21659.12MB
+initialized by random noise
+client 2 have real samples [327, 12176]
+client 2 will condense {0: 5, 5: 122} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 0 have 327 samples, histogram: [ 10  27  75 107  52  32  16   6   0   2], bin edged: [0.00305477 0.00305569 0.0030566  0.00305752 0.00305843 0.00305935
+ 0.00306026 0.00306117 0.00306209 0.003063   0.00306392]
+class 5 have 12176 samples, histogram: [   3    5   28  455 3080 5544 2623  375   58    5], bin edged: [8.19953330e-05 8.20197758e-05 8.20442186e-05 8.20686614e-05
+ 8.20931042e-05 8.21175470e-05 8.21419898e-05 8.21664326e-05
+ 8.21908754e-05 8.22153182e-05 8.22397610e-05]
+client 2, data condensation 0, total loss = 1.5765427350997925, avg loss = 0.7882713675498962
+client 2, data condensation 200, total loss = 0.2457144558429718, avg loss = 0.1228572279214859
+client 2, data condensation 400, total loss = 0.24623192846775055, avg loss = 0.12311596423387527
+client 2, data condensation 600, total loss = 0.25275832414627075, avg loss = 0.12637916207313538
+client 2, data condensation 800, total loss = 0.24754169583320618, avg loss = 0.12377084791660309
+client 2, data condensation 1000, total loss = 0.24666133522987366, avg loss = 0.12333066761493683
+client 2, data condensation 1200, total loss = 0.24770639836788177, avg loss = 0.12385319918394089
+client 2, data condensation 1400, total loss = 0.24489837884902954, avg loss = 0.12244918942451477
+client 2, data condensation 1600, total loss = 0.2481592893600464, avg loss = 0.1240796446800232
+client 2, data condensation 1800, total loss = 0.2498248815536499, avg loss = 0.12491244077682495
+client 2, data condensation 2000, total loss = 0.2507951557636261, avg loss = 0.12539757788181305
+client 2, data condensation 2200, total loss = 0.25237444043159485, avg loss = 0.12618722021579742
+client 2, data condensation 2400, total loss = 0.2490781843662262, avg loss = 0.1245390921831131
+client 2, data condensation 2600, total loss = 0.2460440695285797, avg loss = 0.12302203476428986
+client 2, data condensation 2800, total loss = 0.24544276297092438, avg loss = 0.12272138148546219
+client 2, data condensation 3000, total loss = 0.27618709206581116, avg loss = 0.13809354603290558
+client 2, data condensation 3200, total loss = 0.24973216652870178, avg loss = 0.12486608326435089
+client 2, data condensation 3400, total loss = 0.24502982199192047, avg loss = 0.12251491099596024
+client 2, data condensation 3600, total loss = 0.24856889247894287, avg loss = 0.12428444623947144
+client 2, data condensation 3800, total loss = 0.25030094385147095, avg loss = 0.12515047192573547
+client 2, data condensation 4000, total loss = 0.24703888595104218, avg loss = 0.12351944297552109
+client 2, data condensation 4200, total loss = 0.25442421436309814, avg loss = 0.12721210718154907
+client 2, data condensation 4400, total loss = 0.2565916180610657, avg loss = 0.12829580903053284
+client 2, data condensation 4600, total loss = 0.2486371397972107, avg loss = 0.12431856989860535
+client 2, data condensation 4800, total loss = 0.24644790589809418, avg loss = 0.12322395294904709
+client 2, data condensation 5000, total loss = 0.2440829873085022, avg loss = 0.1220414936542511
+Round 0, client 2 condense time: 109.94865393638611
+client 2, class 0 have 327 samples
+client 2, class 5 have 12176 samples
+total 24564.0MB, used 2992.88MB, free 21571.12MB
+total 24564.0MB, used 2992.88MB, free 21571.12MB
+initialized by random noise
+client 3 have real samples [313]
+client 3 will condense {6: 5} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 6 have 313 samples, histogram: [ 1  5 22 52 59 72 51 34 12  5], bin edged: [0.00319106 0.00319179 0.00319252 0.00319325 0.00319398 0.00319471
+ 0.00319544 0.00319617 0.0031969  0.00319763 0.00319836]
+client 3, data condensation 0, total loss = 0.9567811489105225, avg loss = 0.9567811489105225
+client 3, data condensation 200, total loss = 0.21816836297512054, avg loss = 0.21816836297512054
+client 3, data condensation 400, total loss = 0.21823005378246307, avg loss = 0.21823005378246307
+client 3, data condensation 600, total loss = 0.21671320497989655, avg loss = 0.21671320497989655
+client 3, data condensation 800, total loss = 0.22017021477222443, avg loss = 0.22017021477222443
+client 3, data condensation 1000, total loss = 0.21811842918395996, avg loss = 0.21811842918395996
+client 3, data condensation 1200, total loss = 0.21809335052967072, avg loss = 0.21809335052967072
+client 3, data condensation 1400, total loss = 0.21811042726039886, avg loss = 0.21811042726039886
+client 3, data condensation 1600, total loss = 0.21909795701503754, avg loss = 0.21909795701503754
+client 3, data condensation 1800, total loss = 0.21819433569908142, avg loss = 0.21819433569908142
+client 3, data condensation 2000, total loss = 0.21909905970096588, avg loss = 0.21909905970096588
+client 3, data condensation 2200, total loss = 0.21859413385391235, avg loss = 0.21859413385391235
+client 3, data condensation 2400, total loss = 0.21962402760982513, avg loss = 0.21962402760982513
+client 3, data condensation 2600, total loss = 0.21910667419433594, avg loss = 0.21910667419433594
+client 3, data condensation 2800, total loss = 0.21859745681285858, avg loss = 0.21859745681285858
+client 3, data condensation 3000, total loss = 0.21766425669193268, avg loss = 0.21766425669193268
+client 3, data condensation 3200, total loss = 0.21982818841934204, avg loss = 0.21982818841934204
+client 3, data condensation 3400, total loss = 0.2187764197587967, avg loss = 0.2187764197587967
+client 3, data condensation 3600, total loss = 0.21766364574432373, avg loss = 0.21766364574432373
+client 3, data condensation 3800, total loss = 0.21915192902088165, avg loss = 0.21915192902088165
+client 3, data condensation 4000, total loss = 0.21864159405231476, avg loss = 0.21864159405231476
+client 3, data condensation 4200, total loss = 0.22078350186347961, avg loss = 0.22078350186347961
+client 3, data condensation 4400, total loss = 0.21965715289115906, avg loss = 0.21965715289115906
+client 3, data condensation 4600, total loss = 0.21862083673477173, avg loss = 0.21862083673477173
+client 3, data condensation 4800, total loss = 0.2176441103219986, avg loss = 0.2176441103219986
+client 3, data condensation 5000, total loss = 0.21907667815685272, avg loss = 0.21907667815685272
+Round 0, client 3 condense time: 42.53022217750549
+client 3, class 6 have 313 samples
+total 24564.0MB, used 2720.88MB, free 21843.12MB
+total 24564.0MB, used 2720.88MB, free 21843.12MB
+initialized by random noise
+client 4 have real samples [361, 1048, 7572]
+client 4 will condense {1: 5, 4: 11, 6: 76} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 1 have 361 samples, histogram: [ 51   9   7  14   6  12  99 113  47   3], bin edged: [0.00276616 0.00276683 0.0027675  0.00276817 0.00276884 0.00276951
+ 0.00277018 0.00277086 0.00277153 0.0027722  0.00277287]
+class 4 have 1048 samples, histogram: [  5  17  79 242 350 247  79  21   6   2], bin edged: [0.00095252 0.00095289 0.00095326 0.00095363 0.00095401 0.00095438
+ 0.00095475 0.00095512 0.00095549 0.00095586 0.00095624]
+class 6 have 7572 samples, histogram: [  59  784 1714 2020 1647  994  269   64   17    4], bin edged: [0.00013179 0.00013187 0.00013194 0.00013201 0.00013209 0.00013216
+ 0.00013224 0.00013231 0.00013239 0.00013246 0.00013254]
+client 4, data condensation 0, total loss = 2.005356788635254, avg loss = 0.668452262878418
+client 4, data condensation 200, total loss = 0.3931575119495392, avg loss = 0.13105250398317972
+client 4, data condensation 400, total loss = 0.3904433250427246, avg loss = 0.13014777501424155
+client 4, data condensation 600, total loss = 0.3996351957321167, avg loss = 0.13321173191070557
+client 4, data condensation 800, total loss = 0.4117211401462555, avg loss = 0.13724038004875183
+client 4, data condensation 1000, total loss = 0.38175779581069946, avg loss = 0.1272525986035665
+client 4, data condensation 1200, total loss = 0.38498660922050476, avg loss = 0.12832886974016824
+client 4, data condensation 1400, total loss = 0.3894665539264679, avg loss = 0.12982218464215597
+client 4, data condensation 1600, total loss = 0.3961713910102844, avg loss = 0.13205713033676147
+client 4, data condensation 1800, total loss = 0.38856714963912964, avg loss = 0.1295223832130432
+client 4, data condensation 2000, total loss = 0.3920167088508606, avg loss = 0.1306722362836202
+client 4, data condensation 2200, total loss = 0.39601609110832214, avg loss = 0.13200536370277405
+client 4, data condensation 2400, total loss = 0.37378641963005066, avg loss = 0.12459547321001689
+client 4, data condensation 2600, total loss = 0.37919187545776367, avg loss = 0.12639729181925455
+client 4, data condensation 2800, total loss = 0.40049150586128235, avg loss = 0.13349716862042746
+client 4, data condensation 3000, total loss = 0.3963389992713928, avg loss = 0.13211299975713095
+client 4, data condensation 3200, total loss = 0.3764406442642212, avg loss = 0.1254802147547404
+client 4, data condensation 3400, total loss = 0.41364213824272156, avg loss = 0.13788071274757385
+client 4, data condensation 3600, total loss = 0.42544418573379517, avg loss = 0.14181472857793173
+client 4, data condensation 3800, total loss = 0.38942715525627136, avg loss = 0.12980905175209045
+client 4, data condensation 4000, total loss = 0.3977838456630707, avg loss = 0.13259461522102356
+client 4, data condensation 4200, total loss = 0.3924795985221863, avg loss = 0.13082653284072876
+client 4, data condensation 4400, total loss = 0.3877406716346741, avg loss = 0.12924689054489136
+client 4, data condensation 4600, total loss = 0.3965979218482971, avg loss = 0.13219930728276572
+client 4, data condensation 4800, total loss = 0.3951699137687683, avg loss = 0.13172330458958945
+client 4, data condensation 5000, total loss = 0.4224991202354431, avg loss = 0.14083304007848105
+Round 0, client 4 condense time: 126.373694896698
+client 4, class 1 have 361 samples
+client 4, class 4 have 1048 samples
+client 4, class 6 have 7572 samples
+total 24564.0MB, used 2884.88MB, free 21679.12MB
+total 24564.0MB, used 2884.88MB, free 21679.12MB
+initialized by random noise
+client 5 have real samples [12151]
+client 5 will condense {8: 122} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 8 have 12151 samples, histogram: [   2   28  122  384 1796 5063 3885  787   71   13], bin edged: [8.20200763e-05 8.20686315e-05 8.21171867e-05 8.21657419e-05
+ 8.22142971e-05 8.22628523e-05 8.23114075e-05 8.23599627e-05
+ 8.24085178e-05 8.24570730e-05 8.25056282e-05]
+client 5, data condensation 0, total loss = 0.9552786350250244, avg loss = 0.9552786350250244
+client 5, data condensation 200, total loss = 0.025012783706188202, avg loss = 0.025012783706188202
+client 5, data condensation 400, total loss = 0.025012947618961334, avg loss = 0.025012947618961334
+client 5, data condensation 600, total loss = 0.025278909131884575, avg loss = 0.025278909131884575
+client 5, data condensation 800, total loss = 0.024129528552293777, avg loss = 0.024129528552293777
+client 5, data condensation 1000, total loss = 0.02477746084332466, avg loss = 0.02477746084332466
+client 5, data condensation 1200, total loss = 0.024416707456111908, avg loss = 0.024416707456111908
+client 5, data condensation 1400, total loss = 0.024213198572397232, avg loss = 0.024213198572397232
+client 5, data condensation 1600, total loss = 0.024089187383651733, avg loss = 0.024089187383651733
+client 5, data condensation 1800, total loss = 0.024142244830727577, avg loss = 0.024142244830727577
+client 5, data condensation 2000, total loss = 0.024337653070688248, avg loss = 0.024337653070688248
+client 5, data condensation 2200, total loss = 0.024560371413826942, avg loss = 0.024560371413826942
+client 5, data condensation 2400, total loss = 0.024119887501001358, avg loss = 0.024119887501001358
+client 5, data condensation 2600, total loss = 0.024191677570343018, avg loss = 0.024191677570343018
+client 5, data condensation 2800, total loss = 0.024276774376630783, avg loss = 0.024276774376630783
+client 5, data condensation 3000, total loss = 0.02470283955335617, avg loss = 0.02470283955335617
+client 5, data condensation 3200, total loss = 0.024978090077638626, avg loss = 0.024978090077638626
+client 5, data condensation 3400, total loss = 0.024523809552192688, avg loss = 0.024523809552192688
+client 5, data condensation 3600, total loss = 0.025246959179639816, avg loss = 0.025246959179639816
+client 5, data condensation 3800, total loss = 0.02407677285373211, avg loss = 0.02407677285373211
+client 5, data condensation 4000, total loss = 0.02433750405907631, avg loss = 0.02433750405907631
+client 5, data condensation 4200, total loss = 0.024349838495254517, avg loss = 0.024349838495254517
+client 5, data condensation 4400, total loss = 0.02478778548538685, avg loss = 0.02478778548538685
+client 5, data condensation 4600, total loss = 0.024890420958399773, avg loss = 0.024890420958399773
+client 5, data condensation 4800, total loss = 0.024595245718955994, avg loss = 0.024595245718955994
+client 5, data condensation 5000, total loss = 0.024405337870121002, avg loss = 0.024405337870121002
+Round 0, client 5 condense time: 84.09266948699951
+client 5, class 8 have 12151 samples
+total 24564.0MB, used 2982.88MB, free 21581.12MB
+total 24564.0MB, used 2982.88MB, free 21581.12MB
+initialized by random noise
+client 6 have real samples [10194]
+client 6 will condense {3: 102} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 3 have 10194 samples, histogram: [   4   13   83  659 3307 4340 1427  294   57   10], bin edged: [9.79825311e-05 9.80043976e-05 9.80262640e-05 9.80481305e-05
+ 9.80699969e-05 9.80918634e-05 9.81137298e-05 9.81355962e-05
+ 9.81574627e-05 9.81793291e-05 9.82011956e-05]
+client 6, data condensation 0, total loss = 0.95914626121521, avg loss = 0.95914626121521
+client 6, data condensation 200, total loss = 0.027649138122797012, avg loss = 0.027649138122797012
+client 6, data condensation 400, total loss = 0.027395589277148247, avg loss = 0.027395589277148247
+client 6, data condensation 600, total loss = 0.026003941893577576, avg loss = 0.026003941893577576
+client 6, data condensation 800, total loss = 0.026967763900756836, avg loss = 0.026967763900756836
+client 6, data condensation 1000, total loss = 0.026775982230901718, avg loss = 0.026775982230901718
+client 6, data condensation 1200, total loss = 0.02674933895468712, avg loss = 0.02674933895468712
+client 6, data condensation 1400, total loss = 0.02666131965816021, avg loss = 0.02666131965816021
+client 6, data condensation 1600, total loss = 0.02649969607591629, avg loss = 0.02649969607591629
+client 6, data condensation 1800, total loss = 0.026699531823396683, avg loss = 0.026699531823396683
+client 6, data condensation 2000, total loss = 0.026378916576504707, avg loss = 0.026378916576504707
+client 6, data condensation 2200, total loss = 0.0265178419649601, avg loss = 0.0265178419649601
+client 6, data condensation 2400, total loss = 0.02622118592262268, avg loss = 0.02622118592262268
+client 6, data condensation 2600, total loss = 0.02624904364347458, avg loss = 0.02624904364347458
+client 6, data condensation 2800, total loss = 0.02663644775748253, avg loss = 0.02663644775748253
+client 6, data condensation 3000, total loss = 0.026155758649110794, avg loss = 0.026155758649110794
+client 6, data condensation 3200, total loss = 0.02716715633869171, avg loss = 0.02716715633869171
+client 6, data condensation 3400, total loss = 0.026601867750287056, avg loss = 0.026601867750287056
+client 6, data condensation 3600, total loss = 0.026968952268362045, avg loss = 0.026968952268362045
+client 6, data condensation 3800, total loss = 0.026386987417936325, avg loss = 0.026386987417936325
+client 6, data condensation 4000, total loss = 0.027427680790424347, avg loss = 0.027427680790424347
+client 6, data condensation 4200, total loss = 0.026099205017089844, avg loss = 0.026099205017089844
+client 6, data condensation 4400, total loss = 0.025753848254680634, avg loss = 0.025753848254680634
+client 6, data condensation 4600, total loss = 0.02626138925552368, avg loss = 0.02626138925552368
+client 6, data condensation 4800, total loss = 0.025892553851008415, avg loss = 0.025892553851008415
+client 6, data condensation 5000, total loss = 0.02661823108792305, avg loss = 0.02661823108792305
+Round 0, client 6 condense time: 74.48359489440918
+client 6, class 3 have 10194 samples
+total 24564.0MB, used 2946.88MB, free 21617.12MB
+total 24564.0MB, used 2946.88MB, free 21617.12MB
+initialized by random noise
+client 7 have real samples [9112]
+client 7 will condense {1: 92} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 1 have 9112 samples, histogram: [   3   13   23  231 5864 1335 1143  461   30    9], bin edged: [0.00010959 0.00010962 0.00010965 0.00010968 0.00010971 0.00010974
+ 0.00010977 0.0001098  0.00010983 0.00010986 0.00010989]
+client 7, data condensation 0, total loss = 0.9710372686386108, avg loss = 0.9710372686386108
+client 7, data condensation 200, total loss = 0.05942747741937637, avg loss = 0.05942747741937637
+client 7, data condensation 400, total loss = 0.06547314673662186, avg loss = 0.06547314673662186
+client 7, data condensation 600, total loss = 0.06515461206436157, avg loss = 0.06515461206436157
+client 7, data condensation 800, total loss = 0.05460705608129501, avg loss = 0.05460705608129501
+client 7, data condensation 1000, total loss = 0.05821525305509567, avg loss = 0.05821525305509567
+client 7, data condensation 1200, total loss = 0.07598765939474106, avg loss = 0.07598765939474106
+client 7, data condensation 1400, total loss = 0.055750761181116104, avg loss = 0.055750761181116104
+client 7, data condensation 1600, total loss = 0.07651662826538086, avg loss = 0.07651662826538086
+client 7, data condensation 1800, total loss = 0.05694792792201042, avg loss = 0.05694792792201042
+client 7, data condensation 2000, total loss = 0.05492637678980827, avg loss = 0.05492637678980827
+client 7, data condensation 2200, total loss = 0.04639819636940956, avg loss = 0.04639819636940956
+client 7, data condensation 2400, total loss = 0.06196275353431702, avg loss = 0.06196275353431702
+client 7, data condensation 2600, total loss = 0.052193135023117065, avg loss = 0.052193135023117065
+client 7, data condensation 2800, total loss = 0.06672444194555283, avg loss = 0.06672444194555283
+client 7, data condensation 3000, total loss = 0.04715389758348465, avg loss = 0.04715389758348465
+client 7, data condensation 3200, total loss = 0.06787152588367462, avg loss = 0.06787152588367462
+client 7, data condensation 3400, total loss = 0.05409153178334236, avg loss = 0.05409153178334236
+client 7, data condensation 3600, total loss = 0.06375899165868759, avg loss = 0.06375899165868759
+client 7, data condensation 3800, total loss = 0.07578517496585846, avg loss = 0.07578517496585846
+client 7, data condensation 4000, total loss = 0.06148361414670944, avg loss = 0.06148361414670944
+client 7, data condensation 4200, total loss = 0.05369009077548981, avg loss = 0.05369009077548981
+client 7, data condensation 4400, total loss = 0.06157749146223068, avg loss = 0.06157749146223068
+client 7, data condensation 4600, total loss = 0.05069246143102646, avg loss = 0.05069246143102646
+client 7, data condensation 4800, total loss = 0.062362875789403915, avg loss = 0.062362875789403915
+client 7, data condensation 5000, total loss = 0.06162428855895996, avg loss = 0.06162428855895996
+Round 0, client 7 condense time: 69.72666501998901
+client 7, class 1 have 9112 samples
+total 24564.0MB, used 2928.88MB, free 21635.12MB
+total 24564.0MB, used 2928.88MB, free 21635.12MB
+initialized by random noise
+client 8 have real samples [206, 1179, 734]
+client 8 will condense {3: 5, 4: 12, 8: 8} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 3 have 206 samples, histogram: [11 22 55 44 32 27  8  2  3  2], bin edged: [0.0048505  0.00485159 0.00485268 0.00485378 0.00485487 0.00485596
+ 0.00485705 0.00485814 0.00485923 0.00486032 0.00486141]
+class 4 have 1179 samples, histogram: [  2   7  12  45 239 545 281  41   5   2], bin edged: [0.00084575 0.00084619 0.00084663 0.00084708 0.00084752 0.00084796
+ 0.0008484  0.00084885 0.00084929 0.00084973 0.00085018]
+class 8 have 734 samples, histogram: [  3   5   8  34  80 184 310  96  13   1], bin edged: [0.00135957 0.00136005 0.00136052 0.00136099 0.00136147 0.00136194
+ 0.00136241 0.00136289 0.00136336 0.00136383 0.00136431]
+client 8, data condensation 0, total loss = 2.1107072830200195, avg loss = 0.7035690943400065
+client 8, data condensation 200, total loss = 0.4618304371833801, avg loss = 0.1539434790611267
+client 8, data condensation 400, total loss = 0.4614856541156769, avg loss = 0.1538285513718923
+client 8, data condensation 600, total loss = 0.4622614085674286, avg loss = 0.15408713618914285
+client 8, data condensation 800, total loss = 0.4660806655883789, avg loss = 0.15536022186279297
+client 8, data condensation 1000, total loss = 0.4634464979171753, avg loss = 0.15448216597239176
+client 8, data condensation 1200, total loss = 0.4637543857097626, avg loss = 0.15458479523658752
+client 8, data condensation 1400, total loss = 0.4627576470375061, avg loss = 0.15425254901250204
+client 8, data condensation 1600, total loss = 0.4621044993400574, avg loss = 0.15403483311335245
+client 8, data condensation 1800, total loss = 0.46039626002311707, avg loss = 0.1534654200077057
+client 8, data condensation 2000, total loss = 0.4648791253566742, avg loss = 0.15495970845222473
+client 8, data condensation 2200, total loss = 0.46277952194213867, avg loss = 0.15425984064737955
+client 8, data condensation 2400, total loss = 0.4604867100715637, avg loss = 0.15349557002385458
+client 8, data condensation 2600, total loss = 0.46246638894081116, avg loss = 0.15415546298027039
+client 8, data condensation 2800, total loss = 0.46221673488616943, avg loss = 0.1540722449620565
+client 8, data condensation 3000, total loss = 0.4629325866699219, avg loss = 0.15431086222330728
+client 8, data condensation 3200, total loss = 0.4643176794052124, avg loss = 0.15477255980173746
+client 8, data condensation 3400, total loss = 0.4619331955909729, avg loss = 0.15397773186365762
+client 8, data condensation 3600, total loss = 0.4642398953437805, avg loss = 0.15474663178126016
+client 8, data condensation 3800, total loss = 0.4623759090900421, avg loss = 0.15412530303001404
+client 8, data condensation 4000, total loss = 0.46288636326789856, avg loss = 0.15429545442263284
+client 8, data condensation 4200, total loss = 0.4614723026752472, avg loss = 0.15382410089174905
+client 8, data condensation 4400, total loss = 0.46429893374443054, avg loss = 0.15476631124814352
+client 8, data condensation 4600, total loss = 0.46505922079086304, avg loss = 0.155019740263621
+client 8, data condensation 4800, total loss = 0.463969349861145, avg loss = 0.154656449953715
+client 8, data condensation 5000, total loss = 0.46237844228744507, avg loss = 0.15412614742914835
+Round 0, client 8 condense time: 96.09379529953003
+client 8, class 3 have 206 samples
+client 8, class 4 have 1179 samples
+client 8, class 8 have 734 samples
+total 24564.0MB, used 2748.88MB, free 21815.12MB
+total 24564.0MB, used 2748.88MB, free 21815.12MB
+initialized by random noise
+client 9 have real samples [10316]
+client 9 will condense {2: 104} samples for each class it owns
+get_feature_prototype
+get_logit_prototype
+loss weighted matching the samples
+class 2 have 10316 samples, histogram: [  11   50  277 4249 4997  610   61   28   14   19], bin edged: [9.67355626e-05 9.67844016e-05 9.68332407e-05 9.68820797e-05
+ 9.69309187e-05 9.69797578e-05 9.70285968e-05 9.70774358e-05
+ 9.71262748e-05 9.71751139e-05 9.72239529e-05]
+client 9, data condensation 0, total loss = 0.952279269695282, avg loss = 0.952279269695282
+client 9, data condensation 200, total loss = 0.02816002443432808, avg loss = 0.02816002443432808
+client 9, data condensation 400, total loss = 0.02731620892882347, avg loss = 0.02731620892882347
+client 9, data condensation 600, total loss = 0.028248049318790436, avg loss = 0.028248049318790436
+client 9, data condensation 800, total loss = 0.026827428489923477, avg loss = 0.026827428489923477
+client 9, data condensation 1000, total loss = 0.027181942015886307, avg loss = 0.027181942015886307
+client 9, data condensation 1200, total loss = 0.030630536377429962, avg loss = 0.030630536377429962
+client 9, data condensation 1400, total loss = 0.0299205482006073, avg loss = 0.0299205482006073
+client 9, data condensation 1600, total loss = 0.027475114911794662, avg loss = 0.027475114911794662
+client 9, data condensation 1800, total loss = 0.0306874830275774, avg loss = 0.0306874830275774
+client 9, data condensation 2000, total loss = 0.027398832142353058, avg loss = 0.027398832142353058
+client 9, data condensation 2200, total loss = 0.02670513279736042, avg loss = 0.02670513279736042
+client 9, data condensation 2400, total loss = 0.02882564440369606, avg loss = 0.02882564440369606
+client 9, data condensation 2600, total loss = 0.0264119952917099, avg loss = 0.0264119952917099
+client 9, data condensation 2800, total loss = 0.028455456718802452, avg loss = 0.028455456718802452
+client 9, data condensation 3000, total loss = 0.029101764783263206, avg loss = 0.029101764783263206
+client 9, data condensation 3200, total loss = 0.028193680569529533, avg loss = 0.028193680569529533
+client 9, data condensation 3400, total loss = 0.028327176347374916, avg loss = 0.028327176347374916
+client 9, data condensation 3600, total loss = 0.027226664125919342, avg loss = 0.027226664125919342
+client 9, data condensation 3800, total loss = 0.03183487057685852, avg loss = 0.03183487057685852
+client 9, data condensation 4000, total loss = 0.027825918048620224, avg loss = 0.027825918048620224
+client 9, data condensation 4200, total loss = 0.027361299842596054, avg loss = 0.027361299842596054
+client 9, data condensation 4400, total loss = 0.028680618852376938, avg loss = 0.028680618852376938
+client 9, data condensation 4600, total loss = 0.029027070850133896, avg loss = 0.029027070850133896
+client 9, data condensation 4800, total loss = 0.028316130861639977, avg loss = 0.028316130861639977
+client 9, data condensation 5000, total loss = 0.029082559049129486, avg loss = 0.029082559049129486
+Round 0, client 9 condense time: 74.75285601615906
+client 9, class 2 have 10316 samples
+total 24564.0MB, used 2958.88MB, free 21605.12MB
+server receives {0: 96, 1: 97, 2: 104, 3: 107, 4: 81, 5: 122, 6: 81, 7: 94, 8: 130} condensed samples for each class
+logit_proto before softmax: tensor([[-0.0158, -0.0131, -0.0359,  0.0373, -0.0138,  0.0173,  0.0214, -0.0213,
+          0.0065],
+        [ 0.0311,  0.0175,  0.0197, -0.0130,  0.0157, -0.0614, -0.0283, -0.0240,
+          0.0005],
+        [ 0.0012,  0.0011, -0.0082, -0.0081, -0.0267,  0.0229,  0.0332, -0.0194,
+         -0.0134],
+        [ 0.0009, -0.0202,  0.0038,  0.0209,  0.0212, -0.0071,  0.0287, -0.0053,
+         -0.0086],
+        [-0.0148, -0.0226,  0.0143, -0.0084,  0.0196, -0.0142,  0.0145, -0.0126,
+         -0.0249],
+        [-0.0055,  0.0014,  0.0513,  0.0025,  0.0085, -0.0223, -0.0176,  0.0247,
+          0.0086],
+        [ 0.0022,  0.0010, -0.0076, -0.0062, -0.0052, -0.0031, -0.0228,  0.0021,
+         -0.0338],
+        [-0.0025, -0.0342,  0.0194, -0.0095,  0.0210, -0.0210,  0.0178, -0.0133,
+         -0.0340],
+        [-0.0205, -0.0188, -0.0147, -0.0286,  0.0031,  0.0059, -0.0122, -0.0055,
+         -0.0129]], device='cuda:0')
+shape of prototypes in tensor: torch.Size([9, 2048])
+shape of logit prototypes in tensor: torch.Size([9, 9])
+relation tensor: tensor([[3, 6, 5, 8, 1],
+        [0, 2, 1, 4, 8],
+        [6, 5, 0, 1, 3],
+        [6, 4, 3, 2, 0],
+        [4, 6, 2, 3, 7],
+        [2, 7, 8, 4, 3],
+        [0, 7, 1, 5, 4],
+        [4, 2, 6, 0, 3],
+        [5, 4, 7, 6, 8]], device='cuda:0')
+---------- update global model ----------
+912
+preserve threshold: 10
+1
+Round 0: # synthetic sample: 912
+total 24564.0MB, used 2958.88MB, free 21605.12MB
+{0: {0: 1314, 1: 0, 2: 0, 3: 0, 4: 2, 5: 20, 6: 0, 7: 0, 8: 2}, 1: {0: 3, 1: 0, 2: 0, 3: 0, 4: 843, 5: 1, 6: 0, 7: 0, 8: 0}, 2: {0: 168, 1: 0, 2: 0, 3: 0, 4: 2, 5: 169, 6: 0, 7: 0, 8: 0}, 3: {0: 557, 1: 0, 2: 0, 3: 0, 4: 76, 5: 1, 6: 0, 7: 0, 8: 0}, 4: {0: 1027, 1: 0, 2: 0, 3: 0, 4: 3, 5: 4, 6: 0, 7: 0, 8: 1}, 5: {0: 572, 1: 0, 2: 0, 3: 0, 4: 8, 5: 12, 6: 0, 7: 0, 8: 0}, 6: {0: 695, 1: 0, 2: 0, 3: 0, 4: 27, 5: 19, 6: 0, 7: 0, 8: 0}, 7: {0: 375, 1: 0, 2: 0, 3: 0, 4: 27, 5: 19, 6: 0, 7: 0, 8: 0}, 8: {0: 922, 1: 1, 2: 0, 3: 3, 4: 241, 5: 60, 6: 0, 7: 0, 8: 6}}
+round 0 evaluation: test acc is 0.1859, test loss = 2.190584
+{0: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 6, 6: 0, 7: 0, 8: 1332}, 1: {0: 4, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 843}, 2: {0: 14, 1: 0, 2: 0, 3: 0, 4: 18, 5: 43, 6: 0, 7: 0, 8: 264}, 3: {0: 2, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 632}, 4: {0: 3, 1: 0, 2: 0, 3: 0, 4: 0, 5: 1, 6: 0, 7: 0, 8: 1031}, 5: {0: 3, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 589}, 6: {0: 7, 1: 0, 2: 0, 3: 0, 4: 0, 5: 6, 6: 0, 7: 0, 8: 728}, 7: {0: 1, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 420}, 8: {0: 49, 1: 1, 2: 0, 3: 0, 4: 0, 5: 6, 6: 0, 7: 0, 8: 1177}}
+epoch 0, train loss avg now = 2.212326, train contrast loss now = 0.000000, test acc now = 0.1639, test loss now = 2.188333
+{0: {0: 1, 1: 0, 2: 2, 3: 0, 4: 0, 5: 1211, 6: 0, 7: 2, 8: 122}, 1: {0: 0, 1: 0, 2: 0, 3: 838, 4: 0, 5: 0, 6: 8, 7: 0, 8: 1}, 2: {0: 5, 1: 0, 2: 4, 3: 0, 4: 1, 5: 64, 6: 105, 7: 153, 8: 7}, 3: {0: 85, 1: 0, 2: 0, 3: 13, 4: 0, 5: 257, 6: 240, 7: 0, 8: 39}, 4: {0: 310, 1: 5, 2: 0, 3: 0, 4: 0, 5: 569, 6: 19, 7: 17, 8: 115}, 5: {0: 53, 1: 0, 2: 0, 3: 0, 4: 0, 5: 190, 6: 261, 7: 1, 8: 87}, 6: {0: 164, 1: 11, 2: 0, 3: 1, 4: 0, 5: 239, 6: 61, 7: 4, 8: 261}, 7: {0: 47, 1: 0, 2: 0, 3: 0, 4: 0, 5: 178, 6: 171, 7: 0, 8: 25}, 8: {0: 216, 1: 14, 2: 13, 3: 12, 4: 0, 5: 146, 6: 521, 7: 2, 8: 309}}
+epoch 5, train loss avg now = 2.206302, train contrast loss now = 0.000000, test acc now = 0.0805, test loss now = 2.197573
+epoch avg loss = 0.4412603796574107, total time = 874.3596060276031
+total 24564.0MB, used 3470.88MB, free 21093.12MB
+Round 0 finish, update the prev_syn_proto
+torch.Size([96, 3, 28, 28])
+torch.Size([97, 3, 28, 28])
+torch.Size([104, 3, 28, 28])
+torch.Size([107, 3, 28, 28])
+torch.Size([81, 3, 28, 28])
+torch.Size([122, 3, 28, 28])
+torch.Size([81, 3, 28, 28])
+torch.Size([94, 3, 28, 28])
+torch.Size([130, 3, 28, 28])
+shape of prev_syn_proto: torch.Size([9, 2048])
+{0: {0: 1, 1: 0, 2: 2, 3: 0, 4: 0, 5: 1211, 6: 0, 7: 2, 8: 122}, 1: {0: 0, 1: 0, 2: 0, 3: 838, 4: 0, 5: 0, 6: 8, 7: 0, 8: 1}, 2: {0: 5, 1: 0, 2: 4, 3: 0, 4: 1, 5: 64, 6: 105, 7: 153, 8: 7}, 3: {0: 85, 1: 0, 2: 0, 3: 13, 4: 0, 5: 257, 6: 240, 7: 0, 8: 39}, 4: {0: 310, 1: 5, 2: 0, 3: 0, 4: 0, 5: 569, 6: 19, 7: 17, 8: 115}, 5: {0: 53, 1: 0, 2: 0, 3: 0, 4: 0, 5: 190, 6: 261, 7: 1, 8: 87}, 6: {0: 164, 1: 11, 2: 0, 3: 1, 4: 0, 5: 239, 6: 61, 7: 4, 8: 261}, 7: {0: 47, 1: 0, 2: 0, 3: 0, 4: 0, 5: 178, 6: 171, 7: 0, 8: 25}, 8: {0: 216, 1: 14, 2: 13, 3: 12, 4: 0, 5: 146, 6: 521, 7: 2, 8: 309}}
+round 0 evaluation: test acc is 0.0805, test loss = 2.197573
+[0.08050139275766016]
+{0: [0.03450961367823183], 1: [0.03368401612751186], 2: [0.12627880657017232], 3: [0.22078989692628384], 4: [0.13392687829534214], 5: [0.02691876805499196], 6: [0.028861826756596567], 7: [0.06242943837046623], 8: [0.15656997720003127], 9: [0.030699533114954828]}
+{0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: []}
+{0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: []}
