@@ -168,7 +168,9 @@ class Client:
             images_syn_all = []
             num_real_image = [0, ]
             for i, c in enumerate(self.classes):
-                real_image = self.train_set.images_all[self.train_set.sample_indices[c][dc_iteration:dc_iteration+self.real_batch_size]]
+                st = dc_iteration * self.real_batch_size
+                ed = (dc_iteration + 1) * self.real_batch_size
+                real_image = self.train_set.images_all[self.train_set.sample_indices[c][st:ed]]
                 # real_image = self.train_set.weighted_sample(c, dc_iteration, self.real_batch_size)
                 num_real_image.append(num_real_image[-1] + real_image.shape[0]) 
                 synthetic_image = self.synthetic_images[self.accumulate_num_syn_imgs[i] : self.accumulate_num_syn_imgs[i+1]].reshape(
@@ -241,7 +243,9 @@ class Client:
             real_images_by_class = []
             syn_images_by_class = []
             for i, c in enumerate(self.classes):
-                real_image = self.train_set.images_all[self.train_set.sample_indices[c][dc_iteration:dc_iteration+self.real_batch_size]]
+                st = dc_iteration * self.real_batch_size
+                ed = (dc_iteration + 1) * self.real_batch_size
+                real_image = self.train_set.images_all[self.train_set.sample_indices[c][st:ed]]
                 # real_image = self.train_set.weighted_sample(c, dc_iteration, self.real_batch_size)
                 synthetic_image = self.synthetic_images[self.accumulate_num_syn_imgs[i] : self.accumulate_num_syn_imgs[i+1]].reshape(
                     (self.ipc_dict[c], self.dataset_info['channel'], self.dataset_info['im_size'][0], self.dataset_info['im_size'][1]))
